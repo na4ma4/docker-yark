@@ -16,5 +16,6 @@ USER yark
 
 EXPOSE "7667/tcp"
 
-CMD ["yark", "view"]
+ENTRYPOINT [ "/usr/bin/yark" ]
 
+CMD ["view"]
