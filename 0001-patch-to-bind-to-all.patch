@@ -1,0 +1,11 @@
+--- /usr/lib/python3.10/site-packages/yark/cli.py.orig
++++ /usr/lib/python3.10/site-packages/yark/cli.py
+@@ -144,7 +144,7 @@
+         def launch():
+             """Launches viewer"""
+             app = viewer()
+-            threading.Thread(target=lambda: app.run(port=7667)).run()
++            threading.Thread(target=lambda: app.run(host="0.0.0.0", port=7667)).run()
+
+         # More help
+         if len(args) == 2 and args[1] == "--help":
