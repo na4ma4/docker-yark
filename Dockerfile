@@ -18,5 +18,5 @@ USER yark
 VOLUME ["/yark"]
 WORKDIR /yark
 EXPOSE "7667/tcp"
-ENTRYPOINT [ "/home/yark/.local/bin/yark" ]
+ENTRYPOINT [ "/usr/local/bin/yark" ]
 CMD ["view"]
