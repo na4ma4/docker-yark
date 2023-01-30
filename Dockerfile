@@ -15,8 +15,8 @@ RUN addgroup -S -g 1000 yark && adduser -S -u 1000 -G yark yark \
 
 USER yark
 
+VOLUME ["/yark"]
+WORKDIR /yark
 EXPOSE "7667/tcp"
-
-ENTRYPOINT [ "/usr/bin/yark" ]
-
+ENTRYPOINT [ "/home/yark/.local/bin/yark" ]
 CMD ["view"]
