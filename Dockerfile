@@ -1,11 +1,19 @@
 # syntax=docker/dockerfile:1
-FROM python:3.11-alpine
+FROM python:3.11
+ENV PYTHONFAULTHANDLER=1 \
+  PYTHONUNBUFFERED=1 \
+  PYTHONHASHSEED=random \
+  PIP_NO_CACHE_DIR=off \
+  PIP_DISABLE_PIP_VERSION_CHECK=on \
+  PIP_DEFAULT_TIMEOUT=100 \
+  DOCKER_CONTAINER=1
 
 VOLUME ["/yark"]
 WORKDIR /yark
 
 ARG YARK_VERSION=add-docker-support-v4
-RUN addgroup -S -g 1000 yark && adduser -S -u 1000 -G yark yark \
+RUN addgroup --system --gid 1000 yark \
+ && adduser --system -u 1000 --gid 1000 yark \
  && chown yark:yark /yark \
  && pip install https://github.com/na4ma4/yark/archive/${YARK_VERSION}.zip
 
@@ -15,7 +23,6 @@ RUN addgroup -S -g 1000 yark && adduser -S -u 1000 -G yark yark \
 
 USER yark
 
-VOLUME ["/yark"]
 WORKDIR /yark
 EXPOSE "7667/tcp"
 ENTRYPOINT [ "/usr/local/bin/yark" ]
