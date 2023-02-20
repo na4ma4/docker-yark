@@ -1,4 +1,4 @@
-YARK_VERSION ?= v1.2.4
+YARK_VERSION ?= master
 DOCKER_REPO := ghcr.io/na4ma4/yark
 DOCKER_PLATFORMS += linux/amd64 linux/arm64
 DOCKER_BUILD_ARGS += --secret "id=bind.patch,src=0001-patch-to-bind-to-all.patch"
